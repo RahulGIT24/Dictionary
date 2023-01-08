@@ -22,7 +22,7 @@ function getDefinition(word) {
         str += `<li>${i + 1}. <i>${response.list[i].definition}</i></li>`;
       }
       document.getElementById("word").innerText = word;
-      if (document.getElementById("definitions").innerHTML == "") {
+      if (response.list.length == 0) {
         document.getElementById(
           "definitions"
         ).innerHTML = `<h1 class="text-center">Not found</h1>`;
@@ -31,6 +31,7 @@ function getDefinition(word) {
         document.getElementById("definitions").innerHTML = str;
       }
       document.getElementById("newDict").style.display = "block";
+      console.log(response);
     })
     .catch((err) => {
       loader.style.display = "none";
